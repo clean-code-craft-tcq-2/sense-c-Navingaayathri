@@ -2,22 +2,22 @@
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
-void check_and_alert(float maxThreshold, alerter_funcptr alerters[], Stats compute_statistics)
+
+void emailAlerter()
+{	
+	 emailAlertCallCount = 1;
+}
+void ledAlerter()
 {
-	if (compute_statistics.max > maxThreshold)
+ ledAlertCallCount = 1;
+}
+
+void check_and_alert(float maxThreshold,alerter_funcptr alerters[], Stats computedStats)
+{
+	if(computedStats.max > maxThreshold)
 	{
 		alerters[0]();
 		alerters[1]();
 	}
+	
 }
-
-void emailAlerter()
-{
-	emailAlertCallCount = 1;
-}
-
-void ledAlertCallCount()
-{
-	ledAlertCallCount = 1;
-}
-		
