@@ -1,6 +1,6 @@
 
 #include<stdio.h>
-#include "statcomputedStats.h"
+#include "stats.h"
 
 //Testcase::("reports average, minimum and maximum")
 Stats compute_statistics(const float* numberset, int setlength) 
