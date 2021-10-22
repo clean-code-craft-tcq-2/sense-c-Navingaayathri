@@ -4,7 +4,7 @@
 #include "stats.h"
 #include "alerts.h"
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 
 TEST_CASE("reports average, minimum and maximum") 
 {
