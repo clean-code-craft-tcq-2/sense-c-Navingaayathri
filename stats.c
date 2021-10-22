@@ -1,70 +1,57 @@
-#include<stdio.h>
-#include "stats.h"
 
-int emailAlertCallCount = 0;
-int ledAlertCallCount = 0;
-Stats compute_statistics(const float* numberset, int setlength) {
-	Stats s;
-	s.average = 0;
-    s.min = numberset[0];
-    s.max = numberset[0];
-	float total = 0.0;
-	//Testcase1:	
+#include<stdio.h>
+#include "statcomputedStats.h"
+
+//Testcase::("reports average, minimum and maximum")
+Stats compute_statistics(const float* numberset, int setlength) 
+{
+    Stats computedStats;
+    computedStats.average = 0;
+    computedStats.min = numberset[0];
+    computedStats.max = numberset[0];
+	float total_val = 0.0;
+	
 	for (int i=0;i<setlength;i++)
 	{
-	total+=	numberset[i] ;
-	if (s.min > numberset[i])
+		total_val += numberset[i] ;
+		if (computedStats.min > numberset[i])
+		{
+			computedStats.min = numberset[i];
+		}
+		if (computedStats.max < numberset[i])
+		{
+			computedStats.max = numberset[i];
+		}
+	}	
+	//Testcase:"average is NaN for empty array"
+	if ((setlength == 0 ))
 	{
-		s.min = numberset[i];
+		
+       computedStats.average = NAN;
+       computedStats.min = NAN;
+       computedStats.max = NAN;
+		
 	}
-	if (s.max < numberset[i])
+	else
 	{
-		s.max = numberset[i];
+	 computedStats.average = total_val / setlength;
 	}
-	}
-	//Testcase2:
-	if ((setlength == 0 )|| (total == 0.0))
-	{		
-    s.average = NAN;
-	s.min = NAN;
-    s.max = NAN;		
-	}
-else
-{
-	s.average = total / setlength;
-}
-return s;
+	
+return computedStats;
 }
 
-Stats compute_statistics(const int numberset, int setlength) {
-if ((setlength == 0 ) || (numberset == 0))
+//Testcase:"average is NaN for empty array"
+Stats compute_statistics(const int numberset, int setlength)
+ {
+	 
+	if ((setlength == 0 ) || (numberset == 0))
 	{
-	Stats s;
-    s.average = NAN;
-    s.min = NAN;
-    s.max = NAN;
-	return s;		
+		Stats computedStats;
+		computedStats.average = NAN;
+		computedStats.min = NAN;
+		computedStats.max = NAN;
+		return computedStats;		
 	}
 	
 }
-
-void emailAlerter()
-{	
-emailAlertCallCount = 1;
-}
-void ledAlerter()
-{
- ledAlertCallCount = 1;
-}
-
-void check_and_alert(float maxThreshold,alerter_funcptr alerters[], Stats computedStats)
-{
-	if(computedStats.max > maxThreshold)
-	{
-		alerters[0]();
-		alerters[1]();
-	}
-	
-}
-
 
