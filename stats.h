@@ -9,7 +9,7 @@
 
 struct Stats 
 {
-	float average;
+    float average;
     float min ;
     float max;
 };
