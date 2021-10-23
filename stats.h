@@ -15,7 +15,7 @@ struct Stats
 };
 
 extern Stats compute_statistics(const float* numberset, int setlength);
-extern Stats compute_statistics(const int numberset, int setlength) ;
+extern Stats compute_statistics(const int numberset, int setlength);
 
 #endif
 
