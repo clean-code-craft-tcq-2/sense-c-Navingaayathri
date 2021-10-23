@@ -5,7 +5,7 @@ int ledAlertCallCount = 0;
 
 void emailAlerter()
 {	
-	 emailAlertCallCount = 1;
+emailAlertCallCount = 1;
 }
 void ledAlerter()
 {
@@ -16,8 +16,8 @@ void check_and_alert(float maxThreshold,alerter_funcptr alerters[], Stats comput
 {
 	if(computedStats.max > maxThreshold)
 	{
-		alerters[0]();
-		alerters[1]();
+	alerters[0]();
+	alerters[1]();
 	}
 	
 }
