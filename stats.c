@@ -43,10 +43,9 @@ return computedStats;
 //Testcase:"average is NaN for empty array"
 Stats compute_statistics(const int numberset, int setlength)
  {
-	 
+	Stats computedStats;	 
 	if ((setlength == 0 ) || (numberset == 0))
 	{
-		Stats computedStats;
 		computedStats.average = NAN;
 		computedStats.min = NAN;
 		computedStats.max = NAN;
